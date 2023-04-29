@@ -5,19 +5,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    character:[]
+    characters: [],
+    character: null
   },
   getters: {
-    showElement(state){
-      return state.character
+    showElement(state) {
+      return state.characters
     }
   },
   mutations: {
-    addElement: (state)=>{
-      state.character.push({name: 'name'})
-  }
+    addElement(state){
+      state.characters.push({ name: state.character })
+    },
   },
   actions: {
+    addElementToState( context ) {
+      context.commit('addElement')
+    },
   },
   modules: {
   }

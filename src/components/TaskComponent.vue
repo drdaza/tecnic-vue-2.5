@@ -5,9 +5,9 @@
         <input  v-model="title" type="text">
         <h1>{{ title }}</h1>
         
-        <button @click="addElementToState()">addElementState</button>
-        <button @click="showElementFromState()"></button>
-        <h1>{{showElementFromState}}</h1>
+        <button @click="addCharacter()">addElementState</button>
+
+        <h1 v-for="character of this.$store.state.characters">{{character.name}}</h1>
     </div>
 </template>
 <script>
@@ -25,16 +25,15 @@ export default ({
         changeFunction(){
             this.title = this.title.split(" ")
         },
-        addElementToState(){
-            this.$store.commit("addElement")
-        },
-        showElementFromState(){
-            return this.$store.getters.showElement
+        addCharacter(){
+            this.$store.state.character = this.title;
+            this.$store.dispatch('addElementToState');
+            this.title = ''
         }
     },
     computed:{
         firstComputed(){
-            return this.$store.getters.showElement
+           
         }
     },
     
