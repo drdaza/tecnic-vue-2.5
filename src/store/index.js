@@ -5,17 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    characters: [],
-    character: null
+    tasks: [],
+    task: ''
   },
   getters: {
     showElement(state) {
-      return state.characters
+      return state.tasks
     }
   },
   mutations: {
     addElement(state){
-      state.characters.push({ name: state.character })
+      state.tasks.push( { stateOfTask: false,
+        taskName: state.task} )
     },
   },
   actions: {
