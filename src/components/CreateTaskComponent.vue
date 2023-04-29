@@ -1,10 +1,10 @@
 <template>
     <div class="task-wrapper">
-        <h4>{{taskMessage}}</h4>
+        <h4>{{ taskMessage }}</h4>
 
-        <input  v-model="title" type="text">
-        
-        
+        <input v-model="title" type="text">
+
+
         <button @click="addCharacterEmit()">addElementState</button>
 
     </div>
@@ -13,27 +13,20 @@
 
 export default ({
     name: 'CreateTaskComponent',
-    props:{
+    props: {
         taskMessage: String,
     },
     data: () => ({
-      title: '',
+        title: '',
     }),
     methods: {
-        changeFunction(){
+        changeFunction() {
             this.title = this.title.split(" ")
         },
-        addCharacterEmit(){
+        addCharacterEmit() {
             this.$emit('addCharacterEmit', this.title)
-            
+            this.title = ''
         },
-    },
-    computed:{
-        firstComputed(){
-           
-        }
-    },
-    
-
+    }
 })
 </script>
